@@ -13,21 +13,21 @@ class Application{
                 this.hideRadioExtraElem();
                 
                 if(radio.value == "after~"){
-                    document.getElementById("dateAfter").style.display = "block";
-                    document.getElementById("explainDateAfter").style.display = "block";
-                    document.getElementById("enterBtn").style.display = "block";
+                    document.getElementById("dateAfter").style.display = "inline";
+                    document.getElementById("explainDateAfter").style.display = "inline";
+                    document.getElementById("enterBtn").style.display = "inline";
                 }else if(radio.value == "~before"){
-                    document.getElementById("dateBefore").style.display = "block";
-                    document.getElementById("explainDateBefore").style.display = "block";
-                    document.getElementById("enterBtn").style.display = "block";
+                    document.getElementById("dateBefore").style.display = "inline-block";
+                    document.getElementById("explainDateBefore").style.display = "inline-block";
+                    document.getElementById("enterBtn").style.display = "inline-block";
                 }else if(radio.value=="after~before"){
-                    document.getElementById("dateAfter").style.display = "block";
-                    document.getElementById("explainDateAfter").style.display = "block";
+                    document.getElementById("dateAfter").style.display = "inline";
+                    document.getElementById("explainDateAfter").style.display = "inline";
 
-                    document.getElementById("dateBefore").style.display = "block";
-                    document.getElementById("explainDateBefore").style.display = "block";
+                    document.getElementById("dateBefore").style.display = "inline";
+                    document.getElementById("explainDateBefore").style.display = "inline";
 
-                    document.getElementById("enterBtn").style.display = "block";
+                    document.getElementById("enterBtn").style.display = "inline";
                 }
             })
         }
