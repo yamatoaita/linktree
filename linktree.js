@@ -62,7 +62,7 @@ class Application{
         }else if(OPTION == "after~before"){
             const AFTER  = document.getElementById("dateAfter").value;
             const BEFORE = document.getElementById("dateBefore").value;
-            
+            alert(AFTER)
             console.log(`time: ${BEFORE}`);
             for(let i = 1; i< TABEL_ROW_NUM; i++){
             
