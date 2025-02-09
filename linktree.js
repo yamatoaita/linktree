@@ -1,53 +1,117 @@
 class Application{
     constructor(){
         //➀Elementを取得
-        //➁Radiobuttonに応じて、Elementを表示
+        this.INPUT_AFTER          = document.getElementById("dateAfter");
+        this.SPAN_AFTER           = document.getElementById("explainDateAfter");
+
+        this.INPUT_BEFORE         = document.getElementById("dateBefore");
+        this.SPAN_BEFORE          = document.getElementById("explainDateBefore");
+
+        this.BUTTON_ENTER         = document.getElementById("enterBtn");
+
+        
         this.setRadioEvent();
+        this.setButtonEvent();
+    }
+
+    setButtonEvent(){
+        this.BUTTON_ENTER.addEventListener("click",()=>{
+            this.composeLinks();
+        })
+    }
+
+    composeLinks(){
+        const OPTION = document.querySelector('input[name="option"]:checked').value;
+        const TABEL_ROW_NUM = document.querySelectorAll("tr").length;
+
+        if(      OPTION == "all"){
+            for(let i = 1; i< TABEL_ROW_NUM; i++){
+            
+                var HASHTAG    = document.getElementById(`hashtag${i}Title`).textContent;
+                HASHTAG        = HASHTAG.replace("#","%23");
+
+                var LINK_CELL         = document.getElementById(`hashtag${i}LINK`);
+                LINK_CELL.href        = `https://x.com/search?q=(${HASHTAG})&src=typed_query&f=live`;
+                LINK_CELL.textContent = `https://x.com/search?q=(${HASHTAG})&src=typed_query&f=live`;
+            }
+
+        }else if(OPTION == "after~"){
+            for(let i = 1; i< TABEL_ROW_NUM; i++){
+            
+                var HASHTAG    = document.getElementById(`hashtag${i}Title`).textContent;
+                HASHTAG        = HASHTAG.replace("#","%23");
+
+                var LINK_CELL         = document.getElementById(`hashtag${i}LINK`);
+                LINK_CELL.href        = `https://x.com/search?f=live&q=(${HASHTAG})%20since%3A${AFTER}&src=typed_query&f=live`;
+                LINK_CELL.textContent = `https://x.com/search?f=live&q=(${HASHTAG})%20since%3A${AFTER}&src=typed_query&f=live`;
+            }
+        }else if(OPTION == "~before"){
+            for(let i = 1; i< TABEL_ROW_NUM; i++){
+            
+                var HASHTAG    = document.getElementById(`hashtag${i}Title`).textContent;
+                HASHTAG        = HASHTAG.replace("#","%23");
+
+                var LINK_CELL         = document.getElementById(`hashtag${i}LINK`);
+                LINK_CELL.href        = `https://x.com/search?f=live&q=(${HASHTAG})%20until%3A${BEFORE}&src=typed_query&f=live`;
+                LINK_CELL.textContent = `https://x.com/search?f=live&q=(${HASHTAG})%20until%3A${BEFORE}&src=typed_query&f=live`;
+            }
+        }else if(OPTION == "after~before"){
+            const BEFORE = document.getElementById("dateBefore").textContent;
+            const AFTER = document.getElementById("dateAfter").textContent;
+            console.log(`time: ${BEFORE}`);
+            for(let i = 1; i< TABEL_ROW_NUM; i++){
+            
+                var HASHTAG    = document.getElementById(`hashtag${i}Title`).textContent;
+                HASHTAG        = HASHTAG.replace("#","%23");
+
+                var LINK_CELL         = document.getElementById(`hashtag${i}LINK`);
+                LINK_CELL.href        = `https://x.com/search?f=live&q=(${HASHTAG})%20until%3A${BEFORE}%20since%3A${AFTER}&src=typed_query&f=live`;
+                LINK_CELL.textContent = `https://x.com/search?f=live&q=(${HASHTAG})%20until%3A${BEFORE}%20since%3A${AFTER}&src=typed_query&f=live`;
+            }
+        }
     }
 
     setRadioEvent(){
         const RADIO_BUTTONS = document.querySelectorAll('input[name="option"]')
         for(let radio of RADIO_BUTTONS){
-            console.log(radio);
+     
             radio.addEventListener("change",()=>{
-                this.hideRadioExtraElem();
-                
-                if(radio.value == "after~"){
-                    document.getElementById("dateAfter").style.display = "inline";
-                    document.getElementById("explainDateAfter").style.display = "inline";
-                    document.getElementById("enterBtn").style.display = "inline";
-                }else if(radio.value == "~before"){
-                    document.getElementById("dateBefore").style.display = "inline-block";
-                    document.getElementById("explainDateBefore").style.display = "inline-block";
-                    document.getElementById("enterBtn").style.display = "inline-block";
-                }else if(radio.value=="after~before"){
-                    document.getElementById("dateAfter").style.display = "inline";
-                    document.getElementById("explainDateAfter").style.display = "inline";
+                this.hideRadioExtraElems();
 
-                    document.getElementById("dateBefore").style.display = "inline";
-                    document.getElementById("explainDateBefore").style.display = "inline";
-
-                    document.getElementById("enterBtn").style.display = "inline";
-                }
+                //➁Radiobuttonに応じて、Elementを表示
+                const OPTION = radio.value;
+                this.showRadioExtraElem(OPTION);
             })
         }
 
-
-        document.querySelectorAll('input[name="color"]').forEach(radio => {
-            radio.addEventListener("change", function() {
-              document.getElementById("selectedColor").textContent = "選択された色: " + this.value;
-            });
-          });
     }
 
-    hideRadioExtraElem(){
-        document.getElementById("dateAfter").style.display = "none";
-        document.getElementById("explainDateAfter").style.display = "none";
+    hideRadioExtraElems(){
+        this.INPUT_AFTER.style.display  = "none";
+        this.SPAN_AFTER.style.display   = "none";
 
-        document.getElementById("dateBefore").style.display = "none";
-        document.getElementById("explainDateBefore").style.display = "none";
+        this.INPUT_BEFORE.style.display = "none";
+        this.SPAN_BEFORE.style.display  = "none";
 
-        document.getElementById("enterBtn").style.display = "none";
+    }
+
+    showRadioExtraElem(option){
+        if(      option == "after~"){
+            this.INPUT_AFTER.style.display  = "inline";
+            this.SPAN_AFTER.style.display   = "inline";
+
+        }else if(option == "~before"){
+            this.INPUT_BEFORE.style.display = "inline";
+            this.SPAN_BEFORE.style.display  = "inline";   
+
+        }else if(option=="after~before"){
+            this.INPUT_AFTER.style.display  = "inline";
+            this.SPAN_AFTER.style.display   = "inline";
+
+            this.INPUT_BEFORE.style.display = "inline";
+            this.SPAN_BEFORE.style.display  = "inline";
+
+        }
     }
 }
 
