@@ -35,7 +35,9 @@ class Application{
                 LINK_CELL.textContent = `https://x.com/search?q=(${HASHTAG})&src=typed_query&f=live`;
             }
 
-        }else if(OPTION == "after~"){
+        }else if(OPTION == "after~"){ 
+            const AFTER = document.getElementById("dateAfter").value;
+            
             for(let i = 1; i< TABEL_ROW_NUM; i++){
             
                 var HASHTAG    = document.getElementById(`hashtag${i}Title`).textContent;
@@ -46,6 +48,8 @@ class Application{
                 LINK_CELL.textContent = `https://x.com/search?f=live&q=(${HASHTAG})%20since%3A${AFTER}&src=typed_query&f=live`;
             }
         }else if(OPTION == "~before"){
+            const BEFORE = document.getElementById("dateBefore").value;
+            
             for(let i = 1; i< TABEL_ROW_NUM; i++){
             
                 var HASHTAG    = document.getElementById(`hashtag${i}Title`).textContent;
@@ -56,8 +60,9 @@ class Application{
                 LINK_CELL.textContent = `https://x.com/search?f=live&q=(${HASHTAG})%20until%3A${BEFORE}&src=typed_query&f=live`;
             }
         }else if(OPTION == "after~before"){
-            const BEFORE = document.getElementById("dateBefore").textContent;
-            const AFTER = document.getElementById("dateAfter").textContent;
+            const AFTER  = document.getElementById("dateAfter").value;
+            const BEFORE = document.getElementById("dateBefore").value;
+            
             console.log(`time: ${BEFORE}`);
             for(let i = 1; i< TABEL_ROW_NUM; i++){
             
