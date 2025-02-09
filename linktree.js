@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebas
 import { getDatabase, ref, push,  get, set, onChildAdded, remove, onChildRemoved } 
 from "https://www.gstatic.com/firebasejs/11.1.0/firebase-database.js";
 
-export class FirebaseFunctions{
+class FirebaseFunctions{
     constructor(FIREBASE_CONFIG){              
         // Initialize Firebase
         const APP = initializeApp(FIREBASE_CONFIG); 
