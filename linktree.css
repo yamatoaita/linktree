@@ -52,7 +52,13 @@ table {
     font-size: 30px;
 }
 
+.row-cell{
+    text-align: left;
+}
 .row-cell__title{
+    text-align: center;
+}
+.row-cell__a{
     text-align: center;
 }
 
