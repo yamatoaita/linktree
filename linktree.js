@@ -1,5 +1,5 @@
 import {FirebaseFunctions} from '/utils.js';
-console.log("/utils.js");
+alert("/utils.js");
 
 class Application{
     constructor(){
