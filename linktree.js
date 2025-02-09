@@ -1,4 +1,4 @@
-import {FirebaseFunctions} from '../utils/utils.js';
+import {FirebaseFunctions} from 'utils/utils.js';
 
 class Application{
     constructor(){
