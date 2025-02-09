@@ -1,9 +1,11 @@
-body{
-    margin: 0;           /* 余白をなくす */
-    padding: 0;          /* パディングをなくす */
-    width: 100vw;        /* 画面の横幅に合わせる */
-    height: 100vh;       /* 画面の高さに合わせる（必要に応じて） */
-}
+html, body {
+    width: 100vw;  /* 画面の横幅いっぱい */
+    height: 100vh; /* 画面の高さいっぱい */
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* スクロールバーを防ぐ */
+  }
+
 
 .title{
     text-align: center;
