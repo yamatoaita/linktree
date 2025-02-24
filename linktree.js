@@ -427,7 +427,6 @@ class HtmlFunction{
 
         if(URL.match(/github/)){
             var homePageURL =  URL.match(/https:\/{2}yamatoaita.github.io\/[/w/.]*/)[0];
-            console.log(homePageURL);
             return homePageURL;
         }else{
             var homePageURL = this.composeURLbyPageTitle(homePageTitle,URL);
@@ -655,7 +654,7 @@ class Application{
 
     async executeByURL(){
         const URL = window.location.href;
-        console.log(`it is URL 【${URL}】, and it is composed URL : 【${this.HtmlFunction.returnHomePageURL()}】`);
+
         if(URL == this.HtmlFunction.returnHomePageURL()){
             this.setRadioEvent();//ラジオボタンの選択状況に応じて、elementを表示させる
 
@@ -694,7 +693,10 @@ class Application{
       
             this.applyLoginIfNotExpire();         
         }else{
-            alert("error:無効なURLです。in executeByURL")
+            alert("error:無効なURLです。in executeByURL");
+            alert(`error message: URL is ${URL}, and composed HP-URL is ${this.HtmlFunction.returnHomePageURL()}. composed NAME-URL is like ${this.HtmlFunction.composeURLbyPageTitle("login")}`);
+            console.log(`error message: URL is ${URL}, and composed HP-URL is ${this.HtmlFunction.returnHomePageURL()}. composed NAME-URL is like ${this.HtmlFunction.composeURLbyPageTitle("login")}`);
+            
         }
     }
 
