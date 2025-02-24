@@ -422,11 +422,14 @@ class HtmlFunction{
      * @returns 　http://127.0.0.1:5500/utils/index.htmlやhttps://yamatoaita.github.io/scheduler.github.ioのように返します。
      */
     returnHomePageURL(homePageTitle="index"){
-        const URL =window.location.href;
-
+        const URL = window.location.href;
 
         if(URL.match(/github/)){
-            var homePageURL =  URL.match(/https:\/{2}yamatoaita.github.io\/[/w/.]*/)[0];
+            var homePageURL =  URL.match(/https:\/{2}yamatoaita.github.io\/[\w\.]*\//)[0];
+            //                            https://   yamatoaita.github.io// NAME  //
+
+            //➡https://yamatoaita.github.io/linktree/index.html　　が
+            //  https://yamatoaita.github.io/linktree/　　　　　　　になります
             return homePageURL;
         }else{
             var homePageURL = this.composeURLbyPageTitle(homePageTitle,URL);
